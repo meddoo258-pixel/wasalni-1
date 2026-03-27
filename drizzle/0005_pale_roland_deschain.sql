@@ -1,0 +1,20 @@
+CREATE TABLE `subscriptions` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`userId` int,
+	`fullName` varchar(255) NOT NULL,
+	`phone` varchar(20) NOT NULL,
+	`email` varchar(320),
+	`serviceType` enum('employee','student','teacher','corporate') NOT NULL,
+	`city` varchar(100) NOT NULL,
+	`pickupAddress` varchar(500) NOT NULL,
+	`dropoffAddress` varchar(500) NOT NULL,
+	`preferredTime` varchar(50),
+	`numberOfPassengers` int DEFAULT 1,
+	`notes` text,
+	`status` enum('pending','active','expired','cancelled') NOT NULL DEFAULT 'pending',
+	`startDate` varchar(20),
+	`endDate` varchar(20),
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `subscriptions_id` PRIMARY KEY(`id`)
+);
